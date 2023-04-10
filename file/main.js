@@ -2,7 +2,9 @@ let booksContainer = document.querySelector('.books');
 let loader = document.querySelector('.loader');
 
 
-function api (){ fetch('https://openlibrary.org/subjects/fiction.json?limit=15')
+function api (){ 
+  loader.style.display = 'block';
+  fetch('https://openlibrary.org/subjects/fiction.json?limit=15')
   .then(response => response.json())
   .then(data => {
     const books = data.works;
@@ -26,6 +28,7 @@ function api (){ fetch('https://openlibrary.org/subjects/fiction.json?limit=15')
       bookContainer.appendChild(bookAuthor);
       booksContainer.appendChild(bookContainer);
     });
+    loader.style.display = 'none';
   })
 };
 
